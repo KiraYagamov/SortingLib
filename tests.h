@@ -3,25 +3,10 @@
     #define SORTING_H
 #endif
 
-int check_sorted(void* arr, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
-    for (int i = 0; i < size-1; i++) {
-        if (comp(arr + i * elemsize, arr + (i+1) * elemsize) == SORT_DIRECTION) 
-            return 0;
-    }
-    return 1;
-}
-
 void test_int(int size) {
-    printf("Start test int\n");
+    print("Start test int", YELLOW);
     for (int i = 0; i < 2; i++) {
-        if (SORT_DIRECTION == INCREASE)
-            printf("SORT_DIRECTION: INCREASE\n");
-        else if (SORT_DIRECTION == DECREASE)
-            printf("SORT_DIRECTION: DECREASE\n");
-        else{
-            printf("Error direction!");
-            exit(1);
-        }
+        print_sort_direction();
         for (int j = 1; j <= 8; j++) {
             SORT_METHOD = j;
             int arr[size];
@@ -30,28 +15,18 @@ void test_int(int size) {
             // print_int_arr(arr, size);
             sort(arr, size, sizeof(int), compInt);
             // print_int_arr(arr,size);
-            if (check_sorted(arr, size, sizeof(int), compInt)) 
-                printf("Тест пройден!");
-            else
-                printf("ТЕСТ НЕ ПРОЙДЕН!");
-            printf("\n");
+            check_sorted(arr, size, sizeof(int), compInt); 
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    printf("End test int\n\n");
+    print("End test int", YELLOW);
+    printf("\n");
 }
 
 void test_float(int size) {
-    printf("Start test float\n");
+    print("Start test float", YELLOW);
     for (int i = 0; i < 2; i++) {
-        if (SORT_DIRECTION == INCREASE)
-            printf("SORT_DIRECTION: INCREASE\n");
-        else if (SORT_DIRECTION == DECREASE)
-            printf("SORT_DIRECTION: DECREASE\n");
-        else{
-            printf("Error direction!");
-            exit(1);
-        }
+        print_sort_direction();
         for (int j = 1; j <= 8; j++) {
             SORT_METHOD = j;
             float arr[size];
@@ -60,28 +35,18 @@ void test_float(int size) {
             // print_float_arr(arr, size);
             sort(arr, size, sizeof(float), compFloat);
             // print_float_arr(arr,size);
-            if (check_sorted(arr, size, sizeof(float), compFloat)) 
-                printf("Тест пройден!");
-            else
-                printf("Тест не пройден!");
-            printf("\n");
+            check_sorted(arr, size, sizeof(float), compFloat);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    printf("End test float\n\n");
+    print("End test float", YELLOW);
+    printf("\n");
 }
 
 void test_double(int size) {
-    printf("Start test double\n");
+    print("Start test double", YELLOW);
     for (int i = 0; i < 2; i++) {
-        if (SORT_DIRECTION == INCREASE)
-            printf("SORT_DIRECTION: INCREASE\n");
-        else if (SORT_DIRECTION == DECREASE)
-            printf("SORT_DIRECTION: DECREASE\n");
-        else{
-            printf("Error direction!");
-            exit(1);
-        }
+        print_sort_direction();
         for (int j = 1; j <= 8; j++) {
             SORT_METHOD = j;
             double arr[size];
@@ -90,28 +55,18 @@ void test_double(int size) {
             // print_double_arr(arr, size);
             sort(arr, size, sizeof(double), compDouble);
             // print_double_arr(arr,size);
-            if (check_sorted(arr, size, sizeof(double), compDouble)) 
-                printf("Тест пройден!");
-            else
-                printf("Тест не пройден!");
-            printf("\n");
+            check_sorted(arr, size, sizeof(double), compDouble);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    printf("End test double\n\n");
+    print("End test double", YELLOW);
+    printf("\n");
 }
 
 void test_long(int size) {
-    printf("Start test long\n");
+    print("Start test long", YELLOW);
     for (int i = 0; i < 2; i++) {
-        if (SORT_DIRECTION == INCREASE)
-            printf("SORT_DIRECTION: INCREASE\n");
-        else if (SORT_DIRECTION == DECREASE)
-            printf("SORT_DIRECTION: DECREASE\n");
-        else{
-            printf("Error direction!");
-            exit(1);
-        }
+        print_sort_direction();
         for (int j = 1; j <= 8; j++) {
             SORT_METHOD = j;
             long arr[size];
@@ -120,19 +75,16 @@ void test_long(int size) {
             // print_long_arr(arr, size);
             sort(arr, size, sizeof(long), compLong);
             // print_long_arr(arr,size);
-            if (check_sorted(arr, size, sizeof(long), compLong)) 
-                printf("Тест пройден!");
-            else
-                printf("Тест не пройден!");
-            printf("\n");
+            check_sorted(arr, size, sizeof(long), compLong);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    printf("End test long\n\n");
+    print("End test long", YELLOW);
+    printf("\n");
 }
 
 void test_char(int size) {
-    printf("Start test char\n");
+    print("Start test char", YELLOW);
     char symbols[] = {
         'a', 'b', 'c', 'd', 'e', 'f', 'g',
         'h', 'i', 'j', 'k', 'l', 'm', 'n',
@@ -140,14 +92,7 @@ void test_char(int size) {
         'v', 'w', 'x', 'y', 'z'
     };
     for (int i = 0; i < 2; i++) {
-        if (SORT_DIRECTION == INCREASE)
-            printf("SORT_DIRECTION: INCREASE\n");
-        else if (SORT_DIRECTION == DECREASE)
-            printf("SORT_DIRECTION: DECREASE\n");
-        else{
-            printf("Error direction!");
-            exit(1);
-        }
+        print_sort_direction();
         for (int j = 1; j <= 8; j++) {
             SORT_METHOD = j;
             char arr[size];
@@ -156,13 +101,10 @@ void test_char(int size) {
             // print_char_arr(arr, size);
             sort(arr, size, sizeof(char), compChar);
             // print_char_arr(arr,size);
-            if (check_sorted(arr, size, sizeof(char), compChar)) 
-                printf("Тест пройден!");
-            else
-                printf("Тест не пройден!");
-            printf("\n");
+            check_sorted(arr, size, sizeof(char), compChar);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    printf("End test char\n\n");
+    print("End test char", YELLOW);
+    printf("\n");
 }
