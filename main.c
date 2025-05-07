@@ -5,6 +5,6 @@
 #include "tests.h"
 
 int main() {
-    test_char();
+    test_double(20000);
     return 0;
 }
