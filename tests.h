@@ -4,7 +4,7 @@
 #endif
 
 void test_int(int size) {
-    print("Start test int", YELLOW);
+    print_long_line("Start test int", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
         for (int j = 1; j <= 8; j++) {
@@ -19,12 +19,12 @@ void test_int(int size) {
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    print("End test int", YELLOW);
+    print_long_line("End test int", 40, YELLOW);
     printf("\n");
 }
 
 void test_float(int size) {
-    print("Start test float", YELLOW);
+    print_long_line("Start test float", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
         for (int j = 1; j <= 8; j++) {
@@ -39,12 +39,12 @@ void test_float(int size) {
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    print("End test float", YELLOW);
+    print_long_line("End test float", 40, YELLOW);
     printf("\n");
 }
 
 void test_double(int size) {
-    print("Start test double", YELLOW);
+    print_long_line("Start test double", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
         for (int j = 1; j <= 8; j++) {
@@ -59,12 +59,12 @@ void test_double(int size) {
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    print("End test double", YELLOW);
+    print_long_line("End test double", 40, YELLOW);
     printf("\n");
 }
 
 void test_long(int size) {
-    print("Start test long", YELLOW);
+    print_long_line("Start test long", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
         for (int j = 1; j <= 8; j++) {
@@ -79,12 +79,12 @@ void test_long(int size) {
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    print("End test long", YELLOW);
+    print_long_line("End test long", 40, YELLOW);
     printf("\n");
 }
 
 void test_char(int size) {
-    print("Start test char", YELLOW);
+    print_long_line("Start test char", 40, YELLOW);
     char symbols[] = {
         'a', 'b', 'c', 'd', 'e', 'f', 'g',
         'h', 'i', 'j', 'k', 'l', 'm', 'n',
@@ -105,6 +105,6 @@ void test_char(int size) {
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
-    print("End test char", YELLOW);
+    print_long_line("End test char", 40, YELLOW);
     printf("\n");
 }

@@ -1,7 +1,10 @@
 #include "consts.h"
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#ifndef STRING_H
+    #include <string.h>
+    #define STRING_H
+#endif
 
 void swap(void* el1, void* el2, int elemsize) {
     char temp[elemsize];

@@ -8,35 +8,35 @@ int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
     switch (SORT_METHOD)
     {
         case BUBBLE:
-            print("Bubble sort", WHITE);
+            printf("Bubble sort: ");
             bubble_sort(array, size, elemsize, comp);
             return 0;
         case INSERTION:
-            print("Insertion sort", WHITE);
+            printf("Insertion sort: ");
             insertion_sort(array, size, elemsize, comp);
             return 0;
         case SELECTION:
-            print("Selection sort", WHITE);
+            printf("Selection sort: ");
             selection_sort(array, size, elemsize, comp);
             return 0;
         case COMB:
-            print("Comb sort", WHITE);
+            printf("Comb sort: ");
             comb_sort(array, size, elemsize, comp);
             return 0;
         case SHELL:
-            print("Shell sort", WHITE);
+            printf("Shell sort: ");
             shell_sort(array, size, elemsize, comp);
             return 0;
         case QUICK:
-            print("Quick sort", WHITE);
+            printf("Quick sort: ");
             quick_sort(array, size, elemsize, comp, 0, size-1);
             return 0;
         case MERGE:
-            print("Merge sort", WHITE);
+            printf("Merge sort: ");
             merge_sort(array, size, elemsize, comp, 0, size-1);
             return 0;
         case HEAP:
-            print("Heap sort", WHITE);
+            printf("Heap sort: ");
             heap_sort(array, size, elemsize, comp);
             return 0;
         default:
