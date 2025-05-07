@@ -1,0 +1,5 @@
+// #define SORT_DIRECTION 1
+// #define SORT_METHOD 1
+
+int SORT_DIRECTION = 1;
+int SORT_METHOD = 1;
