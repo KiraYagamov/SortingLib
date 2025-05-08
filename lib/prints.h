@@ -67,9 +67,6 @@ void print_long_line(char* data, int length_of_line, char* color) {
 }
 
 void check_sorted(void* arr, int size, int elemsize, int(*comp)(void*a1,void*a2), double time) {
-    char timeStr[10];
-    snprintf(timeStr, sizeof timeStr, "%lf", time);
-    char result[20];
     for (int i = 0; i < size-1; i++) {
         if (comp(arr + i * elemsize, arr + (i+1) * elemsize) == SORT_DIRECTION) {
             println("FAIL!", RED);
