@@ -1,10 +1,7 @@
-#ifndef SORTING_H
-    #include "sorting_lib.h"
-    #define SORTING_H
-#endif
 #include <time.h>
 
 void test_int(int size) {
+    TEST = 1;
     print_long_line("Start test int", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
@@ -23,9 +20,11 @@ void test_int(int size) {
     }
     print_long_line("End test int", 40, YELLOW);
     printf("\n");
+    TEST = 0;
 }
 
 void test_float(int size) {
+    TEST = 1;
     print_long_line("Start test float", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
@@ -44,9 +43,11 @@ void test_float(int size) {
     }
     print_long_line("End test float", 40, YELLOW);
     printf("\n");
+    TEST = 0;
 }
 
 void test_double(int size) {
+    TEST = 1;
     print_long_line("Start test double", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
@@ -65,9 +66,11 @@ void test_double(int size) {
     }
     print_long_line("End test double", 40, YELLOW);
     printf("\n");
+    TEST = 0;
 }
 
 void test_long(int size) {
+    TEST = 1;
     print_long_line("Start test long", 40, YELLOW);
     for (int i = 0; i < 2; i++) {
         print_sort_direction();
@@ -86,9 +89,11 @@ void test_long(int size) {
     }
     print_long_line("End test long", 40, YELLOW);
     printf("\n");
+    TEST = 0;
 }
 
 void test_char(int size) {
+    TEST = 1;
     print_long_line("Start test char", 40, YELLOW);
     char symbols[] = {
         'a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -113,4 +118,5 @@ void test_char(int size) {
     }
     print_long_line("End test char", 40, YELLOW);
     printf("\n");
+    TEST = 0;
 }

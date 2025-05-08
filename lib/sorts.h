@@ -13,7 +13,7 @@ void swap(void* el1, void* el2, int elemsize) {
     memcpy(el2, temp, elemsize);
 }
 
-void* bubble_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void bubble_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
     int is_sorted = 0; // Флаг отсортированности
     while (!is_sorted) { // Пока массив не отсортирован мы его сортируем
         is_sorted = 1; // Меняем флаг на 1, после чего ищем опровержения
@@ -24,10 +24,9 @@ void* bubble_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void
             }
         }
     }
-    return arr;
 }
 
-void* insertion_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void insertion_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
     for (int i = 1; i < arr_size; i++) { // Проходим все элементы
         int j = i - 1; // И создаем индексы для пар элементов i и j
         void* key = arr + i * elemsize; // Ключ - текущий перемещаемый элемент
@@ -38,10 +37,9 @@ void* insertion_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,v
             j -= 1;
         }
     }
-    return arr;
 }
 
-void* selection_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void selection_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
     int right = arr_size - 1; // Правая граница (в которую будем перемещать элементы)
     int current_index = 0; // Индекс наибольшего (или наименьшего) элемента
     for (int i = 0; i < arr_size; i++) {
@@ -56,10 +54,9 @@ void* selection_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,v
         swap(arr + current_index * elemsize, arr + right * elemsize, elemsize);
         right -= 1; // Смещаем правую границу
     }
-    return arr;
 }
 
-void* comb_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void comb_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
     int step = arr_size / 1.247; // Вычисляем начальный шаг
     while (step != 1) { // Сортируем до тех пор, пока шаг не придет в состояние пузырька
         for (int i = 0; i < arr_size-1-step; i++) {
@@ -70,14 +67,14 @@ void* comb_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a
         }
         step /= 1.247; // Уменьшаем шаг
     }
-    return bubble_sort(arr, arr_size, elemsize, comp); // Когда дошли до шага 1 проводим обычный пузырек
+    bubble_sort(arr, arr_size, elemsize, comp); // Когда дошли до шага 1 проводим обычный пузырек
 }
 
-void* shell_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void shell_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2)) {
     for (int step = arr_size / 2; step > 0; step /= 2){ // Задаем шаг
         for (int i = step; i < arr_size; i++) { // Задаем индекс правого элемента
             int j = i - step; // Задаем индекс левого элемента
-            void* key = arr + i * elemsize; // Задаем ссылку на правый элемент
+            void* key = arr + i * elemsize; // Задаем указатель на правый элемент
             // Перемещаем правый элемент на свое место
             while (j >= 0 && comp(arr + j * elemsize, key) == SORT_DIRECTION) {
                 swap(arr + j * elemsize, key, elemsize);
@@ -86,11 +83,10 @@ void* shell_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*
             }
         }
     }
-    return arr;
 }
 
-void* quick_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2), int left, int right) {
-    if (left == right) return arr; // Если подмассив состоит из 1 элемента -> возвращаем
+void quick_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2), int left, int right) {
+    if (left == right) return; // Если подмассив состоит из 1 элемента -> ничего делать не надо
     char pivot[elemsize]; // Создаем опорный элемент
     int index; // Индекс опорного элемента
     int l_hold = left; // Запоминаем изначальные значения левой и правой границы
@@ -125,26 +121,27 @@ void* quick_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*
         quick_sort(arr, arr_size, elemsize, comp, left, index - 1);
     if (right > index)// Если опорный элемент не крайний, то рекурсивно обрабатываем подмассив элементов, больших чем опорный
         quick_sort(arr, arr_size, elemsize, comp, index + 1, right);
-    return arr;
 }
 
-void* merge_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2), int left, int right)
+void merge_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2), int left, int right)
 {
-    if (left == right) return arr; // Если подмассив состоит из одного элемента -> возвращаем его
+    if (left == right) return; // Если подмассив состоит из одного элемента -> ничего делать не надо
     int mid = (left + right) / 2; // Ищем место разделения
-    merge_sort(arr, arr_size, elemsize, comp, left, mid); // Вызываем эту же функцию для левой половины массива
-    merge_sort(arr, arr_size, elemsize, comp, mid + 1, right); // Вызываем эту же функцию для правой половины массива
-    int i = left;
-    int j = mid + 1;
+    merge_sort(arr, arr_size, elemsize, comp, left, mid); // Сортируем левую половину массива
+    merge_sort(arr, arr_size, elemsize, comp, mid + 1, right); // Сортируем правую половину массива
+    int i = left; // Начальный индекс в левом подмассиве
+    int j = mid + 1; // Начальный индекс в правом подмассиве
     char tmp[right * elemsize]; // Создаем буффер для сохранения отсортированной части массива
-    for (int step = 0; step < right - left + 1; step++)
+    // Сливаем два отсортированных подмассива в один отсортированный массив
+    for (int step = 0; step < right - left + 1; step++) // Задаем шаг (индекс массива буффера)
     {
-        // Если элементы стоят не в своем порядке -> меняем их местами
+        // Если элемент левой половины оказался меньше (или больше), то ставим его на этом шаге
         if ((j > right) || ((i <= mid) && (comp(arr + i * elemsize, arr + j * elemsize) == -SORT_DIRECTION))) 
         {
             memcpy(tmp + step * elemsize, arr + i * elemsize, elemsize);
             i++;
         }
+        // Если же элемент правой половины оказался меньше (или больше), то ставим уже его
         else 
         {
             memcpy(tmp + step * elemsize, arr + j * elemsize, elemsize);
@@ -154,44 +151,44 @@ void* merge_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*
     // Переносим данные из буффера в оригинальный массив
     for (int step = 0; step < right - left + 1; step++)
         memcpy(arr + (left + step) * elemsize, tmp + step * elemsize, elemsize);
-    return arr;
 }
 
-// Функция для просеивания элемента
-void sift_down(void* arr, int root, int bottom, int elemsize, int(*comp)(void*a1,void*a2))
+void heapify(void* arr, int n, int i, int elemsize, int(*comp)(void*a1,void*a2))
 {
-    int maxChild; // Индекс максимального потомка
-    // Пока не дошли до последнего ряда
-    while ((root * 2 <= bottom))
+    int largest = i; // Инициализируем наибольший (или наименьший) элемент как корень
+    int left = 2*i + 1; // левый = 2*i + 1
+    int right = 2*i + 2; // правый = 2*i + 2
+
+    // Если левый дочерний элемент больше (или меньше) корня
+    if (left < n && comp(arr + left * elemsize, arr + largest * elemsize) == SORT_DIRECTION)
+        largest = left;
+
+    // Если правый дочерний элемент больше (или меньше), чем наибольший (или наименьший) элемент на данный момент
+    if (right < n && comp(arr + right * elemsize, arr + largest * elemsize) == SORT_DIRECTION)
+        largest = right;
+
+    // Если наибольший (или наименьший) элемент не корень
+    if (largest != i)
     {
-        if (root * 2 == bottom)    // Если мы в последнем ряду,
-            maxChild = root * 2;    // Запоминаем левый потомок
-        // Иначе запоминаем больший потомок из двух
-        else if (comp(arr + root * 2 * elemsize, arr + (root * 2 + 1) * elemsize) == SORT_DIRECTION)
-            maxChild = root * 2;
-        else
-            maxChild = root * 2 + 1;
-        // Если элемент вершины меньше максимального потомка
-        if (comp(arr + root * elemsize, arr + maxChild * elemsize) == -SORT_DIRECTION)
-        {
-            swap(arr + root * elemsize, arr + maxChild * elemsize, elemsize); // Меняем их местами
-            root = maxChild;
-        }
-        else // Иначе
-            break; // Пирамида сформирована
+        swap(arr + i * elemsize, arr + largest * elemsize, elemsize);
+        // Рекурсивно преобразуем в двоичную кучу затронутое поддерево
+        heapify(arr, n, largest, elemsize, comp);
     }
 }
 
-void* heap_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2))
+void heap_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,void*a2))
 {
-    // Формируем нижний ряд пирамиды
-    for (int i = (arr_size / 2); i >= 0; i--)
-        sift_down(arr, i, arr_size - 1, elemsize, comp);
-    // Просеиваем через пирамиду остальные элементы
-    for (int i = arr_size - 1; i >= 1; i--)
+    // Построение кучи (перегруппируем массив)
+    for (int i = arr_size / 2 - 1; i >= 0; i--)
+        heapify(arr, arr_size, i, elemsize, comp);
+
+    // Один за другим извлекаем элементы из кучи
+    for (int i = arr_size - 1; i >= 0; i--)
     {
+        // Перемещаем текущий корень в конец
         swap(arr + 0 * elemsize, arr + i * elemsize, elemsize);
-        sift_down(arr, 0, i - 1, elemsize, comp);
+
+        // вызываем процедуру heapify на уменьшенной куче
+        heapify(arr, i, 0, elemsize, comp);
     }
-    return arr;
 }

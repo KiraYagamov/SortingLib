@@ -57,8 +57,8 @@ void println(char* str, char* color) {
 void print_long_line(char* data, int length_of_line, char* color) {
     char result[length_of_line+1];
     int length = strlen(data);
-    int pos = length_of_line / 2 - length / 2;
-    int length_of_spaces = (length_of_line - length) / 2;
+    int pos = (length_of_line - length) / 2;
+    int length_of_spaces = pos;
     for (int i = 0; i < length_of_spaces; i++) result[i] = '-';
     for (int i = 0; i < length; i++) result[length_of_spaces + i] = data[i];
     for (int i = 0; i < length_of_spaces + length % 2; i++) result[length_of_spaces + length + i] = '-';
@@ -81,12 +81,15 @@ void check_sorted(void* arr, int size, int elemsize, int(*comp)(void*a1,void*a2)
 }
 
 void print_sort_direction() {
-    if (SORT_DIRECTION == INCREASE)
-        print_long_line("SORT_DIRECTION: INCREASE", 40, WHITE);
-    else if (SORT_DIRECTION == DECREASE)
-        print_long_line("SORT_DIRECTION: DECREASE", 40, WHITE);
-    else{
-        print_long_line("Error direction!", 40, RED);
-        exit(1);
+    switch (SORT_DIRECTION){
+        case INCREASE:
+            print_long_line("SORT_DIRECTION: INCREASE", 40, WHITE);
+            break;
+        case DECREASE:
+            print_long_line("SORT_DIRECTION: DECREASE", 40, WHITE);
+            break;
+        default:
+            print_long_line("Error direction!", 40, RED);
+            exit(1);
     }
 }

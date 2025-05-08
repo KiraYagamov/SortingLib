@@ -1,14 +1,11 @@
-#ifndef SORTING_H
-    #include "sorting_lib.h"
-    #define SORTING_H
-#endif
-#include "tests.h"
+#include "lib/sorting_lib.h"
+#include "lib/tests.h"
 
 int main() {
-    test_int(10000);
-    test_float(10000);
-    test_double(10000);
-    test_long(10000);
-    test_char(10000);
+    // int length = 9;
+    // int arr[] = {5, 7, 3, 4, 8, 0, 2, 1, 6};
+    // sort(arr, length, sizeof arr[0], compInt);
+    // print_int_arr(arr, length);
+    test_int(1000);
     return 0;
 }

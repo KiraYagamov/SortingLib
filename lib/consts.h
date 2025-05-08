@@ -14,4 +14,5 @@
 #define HEAP 8
 
 int SORT_DIRECTION = INCREASE;
-int SORT_METHOD = BUBBLE;
+int SORT_METHOD = QUICK;
+int TEST = 0;
