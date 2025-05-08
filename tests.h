@@ -2,6 +2,7 @@
     #include "sorting_lib.h"
     #define SORTING_H
 #endif
+#include <time.h>
 
 void test_int(int size) {
     print_long_line("Start test int", 40, YELLOW);
@@ -12,10 +13,11 @@ void test_int(int size) {
             int arr[size];
             for (int k = 0; k < size; k++) 
                 arr[k] = rand() % size + 1;
-            // print_int_arr(arr, size);
+            clock_t start = clock();
             sort(arr, size, sizeof(int), compInt);
-            // print_int_arr(arr,size);
-            check_sorted(arr, size, sizeof(int), compInt); 
+            clock_t end = clock();
+            double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+            check_sorted(arr, size, sizeof(int), compInt, seconds); 
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
@@ -32,10 +34,11 @@ void test_float(int size) {
             float arr[size];
             for (int k = 0; k < size; k++) 
                 arr[k] = rand() % size + 1 + (float) (rand() % 100) / 100;
-            // print_float_arr(arr, size);
+            clock_t start = clock();
             sort(arr, size, sizeof(float), compFloat);
-            // print_float_arr(arr,size);
-            check_sorted(arr, size, sizeof(float), compFloat);
+            clock_t end = clock();
+            double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+            check_sorted(arr, size, sizeof(float), compFloat, seconds);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
@@ -52,10 +55,11 @@ void test_double(int size) {
             double arr[size];
             for (int k = 0; k < size; k++) 
                 arr[k] = rand() % size + 1 + (float) (rand() % 100) / 100;
-            // print_double_arr(arr, size);
+            clock_t start = clock();
             sort(arr, size, sizeof(double), compDouble);
-            // print_double_arr(arr,size);
-            check_sorted(arr, size, sizeof(double), compDouble);
+            clock_t end = clock();
+            double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+            check_sorted(arr, size, sizeof(double), compDouble, seconds);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
@@ -72,10 +76,11 @@ void test_long(int size) {
             long arr[size];
             for (int k = 0; k < size; k++) 
                 arr[k] = rand() % size + 1;
-            // print_long_arr(arr, size);
+            clock_t start = clock();
             sort(arr, size, sizeof(long), compLong);
-            // print_long_arr(arr,size);
-            check_sorted(arr, size, sizeof(long), compLong);
+            clock_t end = clock();
+            double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+            check_sorted(arr, size, sizeof(long), compLong, seconds);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }
@@ -98,10 +103,11 @@ void test_char(int size) {
             char arr[size];
             for (int k = 0; k < size; k++)
                 arr[k] = symbols[rand() % 26];
-            // print_char_arr(arr, size);
+            clock_t start = clock();
             sort(arr, size, sizeof(char), compChar);
-            // print_char_arr(arr,size);
-            check_sorted(arr, size, sizeof(char), compChar);
+            clock_t end = clock();
+            double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+            check_sorted(arr, size, sizeof(char), compChar, seconds);
         }
         SORT_DIRECTION = -SORT_DIRECTION;
     }

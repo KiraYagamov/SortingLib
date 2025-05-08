@@ -52,7 +52,7 @@ void* selection_sort(void* arr, int arr_size, int elemsize, int(*comp)(void*a1,v
                 current_index = j;
             }
         }
-        // Меняем местами наибольший (наименьший) элемент
+        // Ставим вправо наибольший (наименьший) элемент
         swap(arr + current_index * elemsize, arr + right * elemsize, elemsize);
         right -= 1; // Смещаем правую границу
     }

@@ -47,6 +47,10 @@ void print_long_arr(long* arr, int arr_length) {
 
 void print(char* str, char* color) {
     printf("%s%s%s", color, str, RESET);
+}
+
+void println(char* str, char* color) {
+    print(str, color);
     printf("\n");
 }
 
@@ -59,17 +63,21 @@ void print_long_line(char* data, int length_of_line, char* color) {
     for (int i = 0; i < length; i++) result[length_of_spaces + i] = data[i];
     for (int i = 0; i < length_of_spaces + length % 2; i++) result[length_of_spaces + length + i] = '-';
     result[length_of_line] = 0;
-    print(result, color);
+    println(result, color);
 }
 
-void check_sorted(void* arr, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
+void check_sorted(void* arr, int size, int elemsize, int(*comp)(void*a1,void*a2), double time) {
+    char timeStr[10];
+    snprintf(timeStr, sizeof timeStr, "%lf", time);
+    char result[20];
     for (int i = 0; i < size-1; i++) {
         if (comp(arr + i * elemsize, arr + (i+1) * elemsize) == SORT_DIRECTION) {
-            print("FAIL!", RED);
+            println("FAIL!", RED);
             return;
         }
     }
-    print("SUCCESS!", GREEN);
+    print("SUCCESS! ", GREEN);
+    printf("Time: %.2lfs\n", time);
 }
 
 void print_sort_direction() {
