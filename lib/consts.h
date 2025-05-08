@@ -13,4 +13,4 @@
 int SORT_DIRECTION = INCREASE;
 int SORT_METHOD = QUICK;
 int TEST = 0;
-int WIN = 1;
+int WIN = 0;
