@@ -1,6 +1,3 @@
-// #define SORT_DIRECTION 1
-// #define SORT_METHOD 1
-
 #define INCREASE 1
 #define DECREASE -1
 

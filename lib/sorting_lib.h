@@ -5,6 +5,8 @@
 int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2));
 
 int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
+    if (SORT_DIRECTION >= 0) SORT_DIRECTION = 1;
+    else SORT_DIRECTION = -1;
     switch (SORT_METHOD)
     {
         case BUBBLE:
@@ -40,6 +42,7 @@ int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
             heap_sort(array, size, elemsize, comp);
             return 0;
         default:
-            return 1;
+            print_long_line("FAIL TO SORT!", 40, RED);
+            exit(1);
     }
 }
