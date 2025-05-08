@@ -58,6 +58,7 @@ void print_long_line(char* data, int length_of_line, char* color) {
     char result[length_of_line+1];
     int length = strlen(data);
     int pos = (length_of_line - length) / 2;
+    if (pos < 0) pos = 0;
     int length_of_spaces = pos;
     for (int i = 0; i < length_of_spaces; i++) result[i] = '-';
     for (int i = 0; i < length; i++) result[length_of_spaces + i] = data[i];
