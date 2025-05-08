@@ -46,7 +46,12 @@ void print_long_arr(long* arr, int arr_length) {
 }
 
 void print(char* str, char* color) {
-    printf("%s%s%s", color, str, RESET);
+    char* reset = RESET;
+    if (WIN){
+        color = "";
+        reset = "";
+    }
+    printf("%s%s%s", color, str, reset);
 }
 
 void println(char* str, char* color) {
