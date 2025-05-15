@@ -1,8 +1,8 @@
-Sorting Library
+**Sorting Library**
 ===========
 
 ***SORTING LIB***
---------
+===========
 NAME
 --------
 
@@ -38,9 +38,8 @@ int length = sizeof arr / sizeof arr[0];
 sort(arr, length, sizeof arr[0], compInt);
 print_int_arr(arr, length);
 ```
-
 ***TESTS***
---------
+===========
 NAME
 --------
 
