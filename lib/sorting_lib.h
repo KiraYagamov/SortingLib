@@ -5,8 +5,8 @@
 int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2));
 
 int sort(void* array, int size, int elemsize, int(*comp)(void*a1,void*a2)) {
-    if (SORT_DIRECTION >= 0) SORT_DIRECTION = 1;
-    else SORT_DIRECTION = -1;
+    if (SORT_DIRECTION >= 0) SORT_DIRECTION = INCREASE;
+    else SORT_DIRECTION = DECREASE;
     switch (SORT_METHOD)
     {
         case BUBBLE:

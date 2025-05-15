@@ -7,6 +7,6 @@ int main() {
     // int length = sizeof arr / sizeof arr[0];
     // sort(arr, length, sizeof arr[0], compInt);
     // print_int_arr(arr, length);
-    test_int(30000);
+    test_double(10000);
     return 0;
 }
