@@ -27,7 +27,7 @@ To change the sorting method, it is enough to change the SORT_METHOD variable.
 
 HOW TO USE IT
 --------
-include the file sorting_lib.h from lib/ like this:
+Include the file sorting_lib.h from lib/ like this:
 ```C
 #include "lib/sorting_lib.h"
 ```
@@ -62,7 +62,7 @@ These functions also take a parameter, the size of the array under test.
 
 HOW TO USE IT
 --------
-include the file sorting_lib.h and tests.h from lib/ like this:
+Include files sorting_lib.h and tests.h from lib/ like this:
 ```C
 #include "lib/sorting_lib.h"
 #include "lib/tests.h"
